@@ -13,14 +13,19 @@ const port = process.env.PORT || 3000;
 io.on('connection', function (socket) {
     console.log('a user connected');
 
-    io.emit('newMessage', {
-        from: 'Mtteu',
-        text: 'Cześć nieznajomy',
-        createdAt: "123123"
-    });
+    // io.emit('newMessage', {
+    //     from: 'Mtteu',
+    //     text: 'Cześć nieznajomy',
+    //     createdAt: "123123"
+    // });
 
     socket.on('createMessage', (message) => {
         console.log(`${message.from}: ${message.text}`);
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
 
     socket.on('disconnect', function () {

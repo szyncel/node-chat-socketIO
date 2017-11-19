@@ -9,8 +9,8 @@ socket.on('disconnect', () => {
     console.log('Disconected from the server');
 });
 
-socket.on('newMessage', (from) => {
-    console.log('new message:', from);
+socket.on('newMessage', (data) => {
+    console.log(`${data.from}: ${data.text}.  ${data.createdAt}`);
 
 });
 var form=document.querySelectorAll('input[type=text]');
