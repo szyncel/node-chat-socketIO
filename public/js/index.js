@@ -1,12 +1,20 @@
 var socket = io();
 socket.on('connect', () => {
     console.log('Connected to the servers');
-
-    
 });
+
+
 
 socket.on('disconnect', () => {
     console.log('Disconected from the server');
+});
+
+socket.on('welcomeMessage',(data) => {
+    console.log(data);
+});
+
+socket.on('welcomeUserMessage',(data) => {
+    console.log(data);
 });
 
 socket.on('newMessage', (data) => {

@@ -4,6 +4,8 @@ var app = express()
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var {generateMessage}=require('./utils/message');
+
 // app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 
@@ -11,21 +13,13 @@ const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
-
-    // io.emit('newMessage', {
-    //     from: 'Mtteu',
-    //     text: 'Cześć nieznajomy',
-    //     createdAt: "123123"
-    // });
+    console.log('New user connected');
+    socket.emit('welcomeMessage', generateMessage('Admin','Witamy na chacie'));
+    socket.broadcast.emit('welcomeMessage', generateMessage('Admin','Nowy użytkownik połączony'));
 
     socket.on('createMessage', (message) => {
         console.log(`${message.from}: ${message.text}`);
-        io.emit('newMessage', {
-            from: message.from,
-            text: message.text,
-            createdAt: new Date().getTime()
-        });
+        io.emit('newMessage',generateMessage(message.from,message.text));
     });
 
     socket.on('disconnect', function () {
