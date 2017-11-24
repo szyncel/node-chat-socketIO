@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -21,36 +20,28 @@
 
     <div class="container">
         <h1>Welcome to the chat app</h1>
-        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
-            <ul class="list-group" id="chat">
-                <!-- <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-2">
-                            User:
-                        </div>
-                        <div class="col-6">
-                           Cześć, to jest pierwsza wiadomość
-                        </div>
-                        <div class="col">
-                            123123123123
-                        </div>
-                    </div>
-                </li> -->
-                <!-- <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li> -->
-                <!-- <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li> -->
-            </ul>
-        </div>
+        <ul class="list-group" id="chat">
+        </ul>
     </div>
 
 
     <div class="container">
         <form>
-            <div class="form-group">
-                <input type="text" class="form-control" id="text" placeholder="Treść">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="text" placeholder="Treść">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-success">Wyslij</button>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-danger">G</button>
+                </div>
             </div>
-            <button type="button" class="btn btn-primary">Submit</button>
+
+
         </form>
     </div>
 

@@ -1,6 +1,7 @@
-$('body').scrollspy({
-    target: '#scroll'
-})
+$("#chat").animate({
+    scrollTop: $(document).height()
+}, "slow");
+
 
 var socket = io();
 socket.on('connect', () => {
@@ -11,24 +12,44 @@ socket.on('disconnect', () => {
     console.log('Disconected from the server');
 });
 
-socket.on('welcomeMessage', (data) => {
-    newMsg(data.from,data.text, data.createdAt);
-    // console.log(data);
-});
-
-socket.on('welcomeUserMessage', (data) => {
-    newMsg(data.from,data.text, data.createdAt);
-    // console.log(data);
-});
-
 socket.on('newMessage', (data) => {
-    newMsg(data.from,data.text, data.createdAt);
-    // console.log(`${data.from}: ${data.text}.  ${data.createdAt}`);
-
-
+    newMsg(data.from, data.text, data.createdAt);
 });
 
-function newMsg(from,text,data){
+socket.on('newLocationMessage',(data) => {
+    locationMsg(data.from,data.url,data.createdAt);
+});
+
+$('.btn.btn-success').on('click', () => {
+    updateChat();
+});
+
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        updateChat();
+    }
+});
+
+$('.btn.btn-danger').on('click',() => {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            socket.emit('createLocationMessage', {
+                latitude:position.coords.latitude,
+                longitude:position.coords.longitude
+            });
+
+            // console.log(`Latitude: ${position.coords.latitude}, longitude ${position.coords.longitude}`);
+          },() => {
+             alert('Unable to fetch location'); 
+          });
+      } else {
+        /* geolocation IS NOT available */console.log('geolocation IS NOT available');
+      }
+});
+
+function newMsg(from, text, data) {
     var msg = $(`<li class="list-group-item">
     <div class="row">
         <div class="col-2">
@@ -43,10 +64,32 @@ function newMsg(from,text,data){
     </div>
 </li>`);
     $('#chat').append(msg);
-}
+    $("#chat").animate({
+        scrollTop: $(document).height()
+    }, "slow");
+};
 
+function locationMsg(from,url,data) {
+    var msg = $(`<li class="list-group-item">
+    <div class="row">
+        <div class="col-2">
+        ${from}:
+        </div>
+        <div class="col-6">
+        <a href="${url}" target="_blank">Moja lokalizacja</a>   
+        </div>
+        <div class="col">
+        ${data}
+        </div>
+    </div>
+</li>`);
+    $('#chat').append(msg);
+    $("#chat").animate({
+        scrollTop: $(document).height()
+    }, "slow");
+};
 
-$('.btn').on('click', () => {
+function updateChat(){
     var message = {
         from: 'User',
         text: $('input[type=text]').val()
@@ -55,4 +98,6 @@ $('.btn').on('click', () => {
         console.log(data);
     });
     $('input[type=text]').val("");
-})
+    var $chat = $("#chat");
+    $chat.scrollTop($chat.prop('scrollHeight'));
+}
