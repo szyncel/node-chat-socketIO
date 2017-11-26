@@ -17,33 +17,73 @@
 </head>
 
 <body>
+    <div class="container-full">
+        <div class="row-fix">
+            <div class="col-md-3">
+                <p class="lead">Użytkownicy</p>
 
-    <div class="container">
-        <h1>Welcome to the chat app</h1>
-        <ul class="list-group" id="chat">
-        </ul>
-    </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row-chat">
+                    <div class="col chat-panel">
+                        <div class="test"></div>
+                        <!-- <ul class="list-group" id="chat">
+                        </ul> -->
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col submit-panel">
 
-
-    <div class="container">
-        <form>
-            <div class="row">
-                <div class="col-9">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="text" placeholder="Treść">
+                            <div class="submit-row">
+                                    <div class="col-9 messageForm">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="text" placeholder="Treść">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 sendBtn">
+                                        <button type="button" class="btn btn-success">Wyslij</button>
+                                    </div>
+                                    <div class="col-1 geoBtn">
+                                        <button type="button" class="btn btn-danger">G</button>
+                                    </div>
+                                </div>     
                     </div>
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-success">Wyslij</button>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-danger">G</button>
-                </div>
             </div>
-
-
-        </form>
+        </div>
     </div>
+
+    <!-- <div class="container">
+            <div class="row ">
+                    <div class="col-md-2 col-people">
+                        <p class="lead">Użytkownicy</p>
+            
+                    </div>
+                    <div class="col-md col-chat">
+                            <ul class="list-group" id="chat">
+                                </ul>
+                                
+                                        <div class="row chat-row">
+                                            <div class="col-9 col-9-chat">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="text" placeholder="Treść">
+                                                </div>
+                                            </div>
+                                            <div class="col-2 col-2-chat">
+                                                <button type="button" class="btn btn-success">Wyslij</button>
+                                            </div>
+                                            <div class="col-1 col-1-chat">
+                                                <button type="button" class="btn btn-danger">G</button>
+                                            </div>
+                                        </div>        
+                                    
+                    </div>
+            
+                    
+                </div>
+
+    </div> -->
+
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/index.js"></script>

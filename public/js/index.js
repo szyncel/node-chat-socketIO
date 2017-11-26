@@ -1,6 +1,6 @@
-$("#chat").animate({
-    scrollTop: $(document).height()
-}, "slow");
+// $("#chat").animate({
+//     scrollTop: $(document).height()
+// }, "slow");
 
 
 var socket = io();
@@ -22,13 +22,19 @@ socket.on('newLocationMessage',(data) => {
 
 $('.btn.btn-success').on('click', () => {
     updateChat();
+    
 });
+
+
 
 $(document).keypress(function (e) {
     if (e.which == 13) {
         e.preventDefault();
         updateChat();
     }
+    // $("#chat").animate({
+    //     scrollTop: $(document).height()
+    // }, "slow");
 });
 
 $('.btn.btn-danger').on('click',() => {
@@ -63,10 +69,22 @@ function newMsg(from, text, data) {
         </div>
     </div>
 </li>`);
-    $('#chat').append(msg);
-    $("#chat").animate({
-        scrollTop: $(document).height()
-    }, "slow");
+    // $('#chat').append(msg);
+     //$('#chat').append($('<li>asdasdasdasdasdasds</li>'));
+
+     //test test test test
+   $('.test').append(`<div class="message"><div class="row-fix">
+   <div class="col-2 messageForm">
+   ${from}:
+   </div>
+   <div class="col-6 messageForm">
+   ${text}
+   </div>
+   <div class="col messageForm">
+   ${data}
+   </div></div>
+</div>`);
+   $(".test").stop().animate({ scrollTop: $(".test")[0].scrollHeight}, 1000);
 };
 
 function locationMsg(from,url,data) {
@@ -84,9 +102,9 @@ function locationMsg(from,url,data) {
     </div>
 </li>`);
     $('#chat').append(msg);
-    $("#chat").animate({
-        scrollTop: $(document).height()
-    }, "slow");
+    // $("#chat").animate({
+    //     scrollTop: $(document).height()
+    // }, "slow");
 };
 
 function updateChat(){
@@ -98,6 +116,6 @@ function updateChat(){
         console.log(data);
     });
     $('input[type=text]').val("");
-    var $chat = $("#chat");
-    $chat.scrollTop($chat.prop('scrollHeight'));
+    // var $chat = $("#chat");
+    // $chat.scrollTop($chat.prop('scrollHeight'));
 }
