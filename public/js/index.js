@@ -56,23 +56,6 @@ $('.btn.btn-danger').on('click',() => {
 });
 
 function newMsg(from, text, data) {
-    var msg = $(`<li class="list-group-item">
-    <div class="row">
-        <div class="col-2">
-        ${from}:
-        </div>
-        <div class="col-6">
-        ${text}
-        </div>
-        <div class="col">
-        ${data}
-        </div>
-    </div>
-</li>`);
-    // $('#chat').append(msg);
-     //$('#chat').append($('<li>asdasdasdasdasdasds</li>'));
-
-     //test test test test
    $('.test').append(`<div class="message"><div class="row-fix">
    <div class="col-2 messageForm">
    ${from}:
@@ -101,7 +84,19 @@ function locationMsg(from,url,data) {
         </div>
     </div>
 </li>`);
-    $('#chat').append(msg);
+    $('.test').append(`<div class="message"><div class="row-fix">
+    <div class="col-2 messageForm">
+    ${from}:
+    </div>
+    <div class="col-6 messageForm">
+    <a href="${url}" target="_blank">Moja lokalizacja</a> 
+    </div>
+    <div class="col messageForm">
+    ${data}
+    </div></div>
+ </div>`);
+
+ $(".test").stop().animate({ scrollTop: $(".test")[0].scrollHeight}, 1000);
     // $("#chat").animate({
     //     scrollTop: $(document).height()
     // }, "slow");
