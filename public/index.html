@@ -33,59 +33,59 @@
                     <div class="w-100"></div>
                     <div class="col submit-panel">
 
-                            <div class="submit-row">
-                                    <div class="col-9 messageForm">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="text" placeholder="Treść">
-                                        </div>
-                                    </div>
-                                    <div class="col-2 sendBtn">
-                                        <button type="button" class="btn btn-success">Wyslij</button>
-                                    </div>
-                                    <div class="col-1 geoBtn">
-                                        <button type="button" class="btn btn-danger">G</button>
-                                    </div>
-                                </div>     
+                        <div class="submit-row">
+                            <div class="col-9 messageForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="text" placeholder="Treść">
+                                </div>
+                            </div>
+                            <div class="col-2 sendBtn">
+                                <button type="button" class="btn btn-success">Wyslij</button>
+                            </div>
+                            <div class="col-1 geoBtn">
+                                <button type="button" class="btn btn-danger">G</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="container">
-            <div class="row ">
-                    <div class="col-md-2 col-people">
-                        <p class="lead">Użytkownicy</p>
-            
-                    </div>
-                    <div class="col-md col-chat">
-                            <ul class="list-group" id="chat">
-                                </ul>
-                                
-                                        <div class="row chat-row">
-                                            <div class="col-9 col-9-chat">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="text" placeholder="Treść">
-                                                </div>
-                                            </div>
-                                            <div class="col-2 col-2-chat">
-                                                <button type="button" class="btn btn-success">Wyslij</button>
-                                            </div>
-                                            <div class="col-1 col-1-chat">
-                                                <button type="button" class="btn btn-danger">G</button>
-                                            </div>
-                                        </div>        
-                                    
-                    </div>
-            
-                    
+    <script id="message-template" type="text/template">
+        <div class="message">
+            <div class="row-fix">
+                <div class="col-2 messageForm">
+                    <b>{{from}}:</b>
                 </div>
+                <div class="col-6 messageForm">
+                    {{text}}
+                </div>
+                <div class="col messageForm">
+                    {{createdAt}}
+                </div>
+            </div>
+        </div>
+    </script>
 
-    </div> -->
-
-
+    <script id="location-message-template" type="text/template">
+        <div class="message">
+            <div class="row-fix">
+                <div class="col-2 messageForm">
+                    {{from}}:
+                </div>
+                <div class="col-6 messageForm">
+                    <a href="{{url}}" target="_blank">Moja lokalizacja</a>
+                </div>
+                <div class="col messageForm">
+                    {{data}}
+                </div>
+            </div>
+        </div>
+    </script>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/mustache.js"></script>
     <script src="./js/index.js"></script>
 
 </body>

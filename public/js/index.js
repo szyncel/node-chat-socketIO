@@ -1,7 +1,3 @@
-// $("#chat").animate({
-//     scrollTop: $(document).height()
-// }, "slow");
-
 
 var socket = io();
 socket.on('connect', () => {
@@ -12,17 +8,27 @@ socket.on('disconnect', () => {
     console.log('Disconected from the server');
 });
 
-socket.on('newMessage', (data) => {
-    newMsg(data.from, data.text, data.createdAt);
+socket.on('newMessage', (message) => {
+    // newMsg(message.from, message.text, message.createdAt);
+    var template = $('#message-template').html();
+    var html = Mustache.render(template, {
+        from: message.from,
+        text: message.text,
+        createdAt: message.createdAt
+    });
+    $('.test').append(html);
+
+    $(".test").stop().animate({
+        scrollTop: $(".test")[0].scrollHeight
+    }, 1000);
 });
 
-socket.on('newLocationMessage',(data) => {
-    locationMsg(data.from,data.url,data.createdAt);
+socket.on('newLocationMessage', (data) => {
+    locationMsg(data.from, data.url, data.createdAt);
 });
 
 $('.btn.btn-success').on('click', () => {
     updateChat();
-    
 });
 
 
@@ -32,77 +38,42 @@ $(document).keypress(function (e) {
         e.preventDefault();
         updateChat();
     }
-    // $("#chat").animate({
-    //     scrollTop: $(document).height()
-    // }, "slow");
 });
 
-$('.btn.btn-danger').on('click',() => {
+$('.btn.btn-danger').on('click', () => {
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
 
             socket.emit('createLocationMessage', {
-                latitude:position.coords.latitude,
-                longitude:position.coords.longitude
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
             });
 
             // console.log(`Latitude: ${position.coords.latitude}, longitude ${position.coords.longitude}`);
-          },() => {
-             alert('Unable to fetch location'); 
-          });
-      } else {
-        /* geolocation IS NOT available */console.log('geolocation IS NOT available');
-      }
+        }, () => {
+            alert('Unable to fetch location');
+        });
+    } else {
+        /* geolocation IS NOT available */
+        console.log('geolocation IS NOT available');
+    }
 });
 
-function newMsg(from, text, data) {
-   $('.test').append(`<div class="message"><div class="row-fix">
-   <div class="col-2 messageForm">
-   ${from}:
-   </div>
-   <div class="col-6 messageForm">
-   ${text}
-   </div>
-   <div class="col messageForm">
-   ${data}
-   </div></div>
-</div>`);
-   $(".test").stop().animate({ scrollTop: $(".test")[0].scrollHeight}, 1000);
+function locationMsg(from, url, data) {
+    var template = $('#location-message-template').html();
+    var html = Mustache.render(template, {
+        from: from,
+        url: url,
+        data: data
+    });
+    $('.test').append(html);
+
+    $(".test").stop().animate({
+        scrollTop: $(".test")[0].scrollHeight
+    }, 1000);
 };
 
-function locationMsg(from,url,data) {
-    var msg = $(`<li class="list-group-item">
-    <div class="row">
-        <div class="col-2">
-        ${from}:
-        </div>
-        <div class="col-6">
-        <a href="${url}" target="_blank">Moja lokalizacja</a>   
-        </div>
-        <div class="col">
-        ${data}
-        </div>
-    </div>
-</li>`);
-    $('.test').append(`<div class="message"><div class="row-fix">
-    <div class="col-2 messageForm">
-    ${from}:
-    </div>
-    <div class="col-6 messageForm">
-    <a href="${url}" target="_blank">Moja lokalizacja</a> 
-    </div>
-    <div class="col messageForm">
-    ${data}
-    </div></div>
- </div>`);
-
- $(".test").stop().animate({ scrollTop: $(".test")[0].scrollHeight}, 1000);
-    // $("#chat").animate({
-    //     scrollTop: $(document).height()
-    // }, "slow");
-};
-
-function updateChat(){
+function updateChat() {
     var message = {
         from: 'User',
         text: $('input[type=text]').val()
@@ -111,6 +82,4 @@ function updateChat(){
         console.log(data);
     });
     $('input[type=text]').val("");
-    // var $chat = $("#chat");
-    // $chat.scrollTop($chat.prop('scrollHeight'));
 }
