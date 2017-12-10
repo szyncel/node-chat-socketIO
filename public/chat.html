@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <title>Chat</title>
+</head>
+
+
+
+<body>
+    <div class="container-full">
+        <div class="row-fix">
+            <div class="col-md-3">
+                <p class="lead">Użytkownicy</p>
+                <ul class="usersList">
+                    
+                </ul>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row-chat">
+                    <div class="col chat-panel">
+                        <div class="test"></div>
+                        <!-- <ul class="list-group" id="chat">
+                        </ul> -->
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col submit-panel">
+
+                        <div class="submit-row">
+                            <div class="col-9 messageForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="text" placeholder="Treść">
+                                </div>
+                            </div>
+                            <div class="col-2 sendBtn">
+                                <button type="button" class="btn btn-success">Wyslij</button>
+                            </div>
+                            <div class="col-1 geoBtn">
+                                <button type="button" class="btn btn-danger">G</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="message-template" type="text/template">
+        <div class="message">
+            <div class="row-fix">
+                <div class="col-2 messageForm">
+                    <b>{{from}}:</b>
+                </div>
+                <div class="col-6 messageForm">
+                    {{text}}
+                </div>
+                <div class="col messageForm">
+                    {{createdAt}}
+                </div>
+            </div>
+        </div>
+        <hr>
+    </script>
+
+    <script id="location-message-template" type="text/template">
+        <div class="message">
+            <div class="row-fix">
+                <div class="col-2 messageForm">
+                        <b>{{from}}:</b>
+                </div>
+                <div class="col-6 messageForm">
+                    <a href="{{url}}" target="_blank">Moja lokalizacja</a>
+                </div>
+                <div class="col messageForm">
+                    {{data}}
+                </div>
+            </div>
+        </div>
+        <hr>
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/mustache.js"></script>
+    <script src="./js/deparam.js"></script>
+    <script src="./js/chat.js"></script>
+
+</body>
+</html>

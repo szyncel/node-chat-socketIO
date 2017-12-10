@@ -10,83 +10,28 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/join.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
-    <title>Chat</title>
+    <title>Join | chatApp</title>
 </head>
 
 <body>
-    <div class="container-full">
-        <div class="row-fix">
-            <div class="col-md-3">
-                <p class="lead">Użytkownicy</p>
-
-            </div>
-            <div class="col-md-9">
-                <div class="row-chat">
-                    <div class="col chat-panel">
-                        <div class="test"></div>
-                        <!-- <ul class="list-group" id="chat">
-                        </ul> -->
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="col submit-panel">
-
-                        <div class="submit-row">
-                            <div class="col-9 messageForm">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="text" placeholder="Treść">
-                                </div>
-                            </div>
-                            <div class="col-2 sendBtn">
-                                <button type="button" class="btn btn-success">Wyslij</button>
-                            </div>
-                            <div class="col-1 geoBtn">
-                                <button type="button" class="btn btn-danger">G</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container join">
+        <h3 class="login">Login to chat</h3>
+        <form action="/chat.html">
+            <p class="lead">Jak się nazywasz</p>
+            <input class="form-control form-control-sm" type="text" name="name" autofocus>
+            <p class="lead">Nazwa pokoju</p>
+            <input class="form-control form-control-sm" type="text" name="room" autofocus>
+            <button type="submit" class="btn btn-primary btn-lg btn-block btn-sm">Dołącz</button>
+        </form>
     </div>
 
-    <script id="message-template" type="text/template">
-        <div class="message">
-            <div class="row-fix">
-                <div class="col-2 messageForm">
-                    <b>{{from}}:</b>
-                </div>
-                <div class="col-6 messageForm">
-                    {{text}}
-                </div>
-                <div class="col messageForm">
-                    {{createdAt}}
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="location-message-template" type="text/template">
-        <div class="message">
-            <div class="row-fix">
-                <div class="col-2 messageForm">
-                    {{from}}:
-                </div>
-                <div class="col-6 messageForm">
-                    <a href="{{url}}" target="_blank">Moja lokalizacja</a>
-                </div>
-                <div class="col messageForm">
-                    {{data}}
-                </div>
-            </div>
-        </div>
-    </script>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/mustache.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/chat.js"></script>
 
 </body>
 

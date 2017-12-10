@@ -1,11 +1,25 @@
-
 var socket = io();
 socket.on('connect', () => {
-    console.log('Connected to the servers');
+    var params = $.deparam(window.location.search);
+    //console.log(params);
+    //console.log('Connected to the servers');
+    socket.emit('join', params, (err) => {
+        if (err) {
+            alert(err);
+            window.location.href = '/';
+        } else {
+            console.log('No errors');
+        }
+    })
 });
 
 socket.on('disconnect', () => {
     console.log('Disconected from the server');
+});
+
+socket.on('updateUserList', (users) => {
+    //console.log('Users List', users);
+    updateUserList(users);
 });
 
 socket.on('newMessage', (message) => {
@@ -59,6 +73,18 @@ $('.btn.btn-danger').on('click', () => {
     }
 });
 
+function updateUserList(users) {
+    $('.usersList').empty();
+    // for (var i = 0; i < users.length; i++) {
+    //     $('.usersList').append(`<li>${users[i]}</li>`);
+    // }
+    users.forEach((user) => {
+        $('.usersList').append(`<li>${user}</li>`);
+    })
+
+
+}
+
 function locationMsg(from, url, data) {
     var template = $('#location-message-template').html();
     var html = Mustache.render(template, {
@@ -75,7 +101,6 @@ function locationMsg(from, url, data) {
 
 function updateChat() {
     var message = {
-        from: 'User',
         text: $('input[type=text]').val()
     }
     socket.emit('createMessage', message, function (data) {

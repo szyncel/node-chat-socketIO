@@ -138,6 +138,18 @@
         overflow-y:scroll;
     }
 
-    .message{
+    .usersList {
+        list-style-type: none;
+        padding-left: 0;
         
     }
+    .usersList li{
+        font-weight: 500;
+        margin-bottom: 4px;
+        padding: 4px;
+        border-radius: 2px;
+        
+       
+        background-color: white;
+    }
+    

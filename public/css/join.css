@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(116, 204, 255);
+}
+
+.lead{
+    font-size: 14px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.form-control{
+    margin-bottom: 15px;
+}
+
+.form-control-sm{
+    border-radius: 0;
+}
+
+.login{
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 700;
+    /* margin-top: 25%;
+    padding: 50px; */
+}
+
+.join{
+    width: 30%;
+    -webkit-box-shadow: 0px 0px 40px 15px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 40px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 40px 15px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.233);
+    margin-top: 10%;
+    padding: 20px;
+    border-radius: 3px;
+    /* border-bottom: 1px solid rgb(0, 52, 148); */
+}
+
+.btn{
+    margin-top: 20px;
+    border-radius: 0;
+}
