@@ -19,19 +19,24 @@
 <body>
     <div class="container join">
         <h3 class="login">Login to chat</h3>
-        <form action="/chat.html">
+        <form>
+            <!-- <form action="#"> -->
             <p class="lead">Jak się nazywasz</p>
-            <input class="form-control form-control-sm" type="text" name="name" autofocus>
-            <p class="lead">Nazwa pokoju</p>
-            <input class="form-control form-control-sm" type="text" name="room" autofocus>
-            <button type="submit" class="btn btn-primary btn-lg btn-block btn-sm">Dołącz</button>
+            <input class="form-control form-control-sm name" type="text" name="name" autofocus>
+            <p class="lead">Wybierz pokój</p>
+            <select name="room" class="form-control form-control-sm selectRoom">
+                <option value="0">Wybierz pokój</option>
+                <option value="1">Stwórz nowy pokój</option>
+            </select>
+            <input id="new" class="form-control form-control-sm" type="text" name="room" autofocus placeholder="Podaj nazwę nowego pokoju">
+            <button id="test" type="button" class="btn btn-success btn-lg btn-block btn-sm">Dołącz</button>
         </form>
     </div>
 
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/mustache.js"></script>
-    <script src="./js/chat.js"></script>
+    <script src="./js/login.js"></script>
 
 </body>
 

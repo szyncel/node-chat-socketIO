@@ -35,6 +35,14 @@ class Users {
 
         return namesArray;
     }
+
+    getRoomList(){
+        var roomNames= this.users.map((user) =>user.room);
+        var unique = roomNames.filter(function(elem, index, self) {
+            return index === self.indexOf(elem);
+        });
+        return unique;
+    }
 }
 
 

@@ -56,4 +56,10 @@ describe('Users class tests', () => {
        expect(user).toEqual(users.users[2]); 
     });
 
+    it('should return all room names',() => {
+        var rooms=users.getRoomList();
+
+        expect(rooms).toEqual(['Mozg','Test']);
+    })
+
 });

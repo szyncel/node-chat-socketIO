@@ -9,13 +9,13 @@
     }
 
     .col-md-3 {
-        background: rgb(116, 204, 255);
+        background: rgb(132, 255, 138);
         height: 100vh;
     }
 
     .col-md-9 {
         height: 100vh;
-        background-color: rgb(216, 216, 216);
+        background-color: rgb(228, 228, 228);
     }
 
     .row-fix {
@@ -50,7 +50,7 @@
     }
 
     .list-group-item:nth-child(odd) {
-        background: rgb(216, 216, 216);
+        background: rgb(228, 228, 228);
         
     }
 
@@ -83,7 +83,7 @@
 
     .submit-panel {
         height: 10%;
-        background-color: rgb(216, 216, 216);
+        background-color: rgb(228, 228, 228);
     }
 
     .submit-row {
@@ -93,7 +93,7 @@
         flex-wrap: wrap;
         margin-right: -15px;
         margin-left: -15px;
-        background-color: rgb(216, 216, 216);
+        background-color: rgb(228, 228, 228);
         /* padding-top:2%; */
         /* border: 1px solid black; */
     }
@@ -119,7 +119,7 @@
 
     .col-people {
         padding-right: 0;
-        background-color: rgb(99, 163, 236);
+        background-color: rgb(132, 255, 138);
     }
 
     #chat {

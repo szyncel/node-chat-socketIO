@@ -23,6 +23,14 @@ const port = process.env.PORT || 3000;
 
 io.on('connection', function (socket) {
 
+    var roomList=users.getRoomList();
+
+    if(roomList.length>0){
+        //console.log('są jakieś:');
+        io.emit('roomList',roomList);
+        console.log(roomList);
+    }
+
     socket.on('createMessage', (message, callback) => {
         var user=users.getUser(socket.id);
 

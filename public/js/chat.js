@@ -1,8 +1,11 @@
 var socket = io();
 socket.on('connect', () => {
-    var params = $.deparam(window.location.search);
-    //console.log(params);
-    //console.log('Connected to the servers');
+    //var params = $.deparam(window.location.search);
+    var params = {
+        name: localStorage.getItem('name'),
+        room: localStorage.getItem('room')
+    }
+    //localStorage.clear();
     socket.emit('join', params, (err) => {
         if (err) {
             alert(err);
