@@ -5,12 +5,12 @@ socket.on('connect', () => {
         name: localStorage.getItem('name'),
         room: localStorage.getItem('room')
     }
-    //localStorage.clear();
     socket.emit('join', params, (err) => {
         if (err) {
             alert(err);
             window.location.href = '/';
         } else {
+            $('.roomName').html(params.room);
             console.log('No errors');
         }
     })
@@ -21,12 +21,10 @@ socket.on('disconnect', () => {
 });
 
 socket.on('updateUserList', (users) => {
-    //console.log('Users List', users);
     updateUserList(users);
 });
 
 socket.on('newMessage', (message) => {
-    // newMsg(message.from, message.text, message.createdAt);
     var template = $('#message-template').html();
     var html = Mustache.render(template, {
         from: message.from,
@@ -34,7 +32,6 @@ socket.on('newMessage', (message) => {
         createdAt: message.createdAt
     });
     $('.test').append(html);
-
     $(".test").stop().animate({
         scrollTop: $(".test")[0].scrollHeight
     }, 1000);
@@ -47,8 +44,6 @@ socket.on('newLocationMessage', (data) => {
 $('.btn.btn-success').on('click', () => {
     updateChat();
 });
-
-
 
 $(document).keypress(function (e) {
     if (e.which == 13) {
@@ -65,8 +60,6 @@ $('.btn.btn-danger').on('click', () => {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             });
-
-            // console.log(`Latitude: ${position.coords.latitude}, longitude ${position.coords.longitude}`);
         }, () => {
             alert('Unable to fetch location');
         });
@@ -76,16 +69,15 @@ $('.btn.btn-danger').on('click', () => {
     }
 });
 
+$('.leave').on('click', () => {
+    window.location.href = '/';
+})
+
 function updateUserList(users) {
     $('.usersList').empty();
-    // for (var i = 0; i < users.length; i++) {
-    //     $('.usersList').append(`<li>${users[i]}</li>`);
-    // }
     users.forEach((user) => {
         $('.usersList').append(`<li>${user}</li>`);
-    })
-
-
+    });
 }
 
 function locationMsg(from, url, data) {
@@ -96,7 +88,6 @@ function locationMsg(from, url, data) {
         data: data
     });
     $('.test').append(html);
-
     $(".test").stop().animate({
         scrollTop: $(".test")[0].scrollHeight
     }, 1000);
@@ -106,6 +97,10 @@ function updateChat() {
     var message = {
         text: $('input[type=text]').val()
     }
+    if (!message.text.length) {
+        message.text = "...";
+    }
+
     socket.emit('createMessage', message, function (data) {
         console.log(data);
     });

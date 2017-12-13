@@ -17,43 +17,47 @@ var {
 var users = new Users();
 
 
-
 const publicPath = path.join(__dirname, '../public');
 const port = process.env.PORT || 3000;
 
 io.on('connection', function (socket) {
 
-    var roomList=users.getRoomList();
-
-    if(roomList.length>0){
-        //console.log('są jakieś:');
-        io.emit('roomList',roomList);
-        console.log(roomList);
-    }
+    var roomList = users.getRoomList();
+    if (roomList.length > 0) {
+        io.emit('roomList', roomList);
+    };
 
     socket.on('createMessage', (message, callback) => {
-        var user=users.getUser(socket.id);
+        var user = users.getUser(socket.id);
 
-        if(user){
+        if (user) {
             io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
-        }
-        
+        };
         callback('This is form the server');
     });
 
     socket.on('createLocationMessage', (position) => {
-        var user=users.getUser(socket.id);
-
-        if(user){
+        var user = users.getUser(socket.id);
+        if (user) {
             io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, position));
+        };
+    });
+
+    socket.on('checkName', (name, callback) => {
+        if (users.getuserByName(name)) {
+            return callback('Istnieje już użytkownik o takiej nazwie');
         }
-        
     });
 
     socket.on('join', (params, callback) => {
         if (!isRealString(params.name) || !isRealString(params.room)) {
-            return callback('Name and room name  are required')
+            return callback('Nazwa użytkownika i pokoju są wymagane')
         }
+        if (users.getuserByName(params.name, params.room)) {
+            return callback('Istnieje już użytkownik o takiej nazwie');
+        }
+
+
 
         socket.join(params.room);
         users.removeUser(socket.id);
@@ -63,26 +67,20 @@ io.on('connection', function (socket) {
 
         socket.emit('newMessage', generateMessage('Admin', `Witamy na chacie: ${params.name}`));
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} dołączył do czatu`));
-
         callback();
     });
 
     socket.on('disconnect', function () {
         var user = users.removeUser(socket.id);
-
         if (user) {
             io.to(user.room).emit('updateUserList', users.getUserList(user.room));
-            io.to(user.room).emit('newMessage',generateMessage('Admin',`${user.name} wyszedł z chatu.`));
+            io.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} wyszedł z chatu.`));
         }
-
         console.log('user disconnected');
     });
 });
 
-
-
 app.use(express.static(publicPath));
-
 http.listen(port, () => {
     console.log(`Started on port ${port}`);
 });

@@ -8,6 +8,7 @@ class Users {
             name,
             room
         };
+
         this.users.push(user);
         return user;
     }
@@ -29,11 +30,24 @@ class Users {
         return this.users.filter((user) => user.id === id)[0];
     }
 
+    getuserByName(name, room){
+        var roomLists=this.getUserList(room);
+
+        return roomLists.filter((user) => user === name)[0];
+    }
+
     getUserList(room) {
         var users = this.users.filter((user) => user.room === room);
         var namesArray = users.map((user) => user.name);
 
         return namesArray;
+    }
+
+    getRoom(room){
+        var roomList= this.getRoomList();
+
+        return roomList.filter((r) => r === room);
+
     }
 
     getRoomList(){

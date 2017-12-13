@@ -1,155 +1,199 @@
-    @import url('https://fonts.googleapis.com/css?family=Cabin');
-    body {
-        width: 100%;
-    }
+@import url('https://fonts.googleapis.com/css?family=Assistant|Pontano+Sans|Sarala|VT323');
+body {
+    width: 100%;
+    font-family: 'Sarala', sans-serif;
+}
 
-    .container-full {
-        margin: 0 auto;
-        width: 100%;
-    }
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}
 
-    .col-md-3 {
-        background: rgb(132, 255, 138);
-        height: 100vh;
-    }
+.col-md-3 {
+    background: rgb(132, 255, 138);
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
+}
 
-    .col-md-9 {
-        height: 100vh;
-        background-color: rgb(228, 228, 228);
-    }
+.col-md-9 {
+    height: 100vh;
+    background-color: rgb(228, 228, 228);
+}
 
-    .row-fix {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        /* margin-right: -15px;
+.row-fix {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* margin-right: -15px;
     margin-left: -15px; */
-    }
+}
 
-    .scrollspy-example {
-        position: relative;
-        height: 200px;
-        margin-top: .5rem;
-        overflow: auto;
-    }
+hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
 
-    .list-group-item{
-        margin-top: 5px;
-        
-    }
-    .list-group-item:last-child{
-        margin-bottom: 0;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    
-    }
-    .list-group-item:first-child{
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-    }
+h5 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
 
-    .list-group-item:nth-child(odd) {
-        background: rgb(228, 228, 228);
-        
-    }
+.leader {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
 
-    .form-control {
-        border-radius: 0;
-        width: 100%;
-    }
+.room {
+    padding: 5px;
+}
 
-    .btn {
-        border-radius: 0;
-        width: 100%;
-    }
+.roomName {
+    font-weight: 600;
+    color: #353535;
+}
 
-    .row-chat {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        height: 100vh;
-        /* margin-right: -15px;
+.lead {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 2px;
+    font-weight: 500;
+    float: right;
+    margin-top: 1.5px;
+    /* margin-right: 4px;  */
+}
+
+.users {
+    padding: 10px;
+    padding-top: 0;
+}
+
+.scrollspy-example {
+    position: relative;
+    height: 200px;
+    margin-top: .5rem;
+    overflow: auto;
+}
+
+.list-group-item {
+    margin-top: 5px;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.list-group-item:nth-child(odd) {
+    background: rgb(228, 228, 228);
+}
+
+.form-control {
+    border-radius: 0;
+    width: 100%;
+}
+
+.btn {
+    border-radius: 0;
+    width: 100%;
+}
+
+.row-chat {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 100vh;
+    /* margin-right: -15px;
     margin-left: -15px; */
-    }
+}
 
-    .chat-panel {
-        height: 80%;
-        padding-left: 0;
-        padding-right: 0;
-        /* background-color: red; */
-    }
+.chat-panel {
+    height: 80%;
+    padding-left: 0;
+    padding-right: 0;
+    /* background-color: red; */
+}
 
-    .submit-panel {
-        height: 10%;
-        background-color: rgb(228, 228, 228);
-    }
+.submit-panel {
+    height: 10%;
+    background-color: rgb(228, 228, 228);
+}
 
-    .submit-row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        background-color: rgb(228, 228, 228);
-        /* padding-top:2%; */
-        /* border: 1px solid black; */
-    }
+.submit-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    background-color: rgb(228, 228, 228);
+    /* padding-top:2%; */
+    /* border: 1px solid black; */
+}
 
-    .messageForm {
-        padding-left: 0;
-        padding-right: 0;
-    }
+.messageForm {
+    padding-left: 0;
+    padding-right: 0;
+}
 
-    .sendBtn {
-        padding-left: 0;
-        padding-right: 0;
-    }
+.sendBtn {
+    padding-left: 0;
+    padding-right: 0;
+}
 
-    .geoBtn {
-        padding-left: 0;
-        padding-right: 0;
-    }
+.geoBtn {
+    padding-left: 0;
+    padding-right: 0;
+}
 
-    .form-group {
-        margin-bottom: 0;
-    }
+.form-group {
+    margin-bottom: 0;
+}
 
-    .col-people {
-        padding-right: 0;
-        background-color: rgb(132, 255, 138);
-    }
+.col-people {
+    padding-right: 0;
+    background-color: rgb(132, 255, 138);
+}
 
-    #chat {
-        margin-top: 1%;
-        height: 100%;
-        overflow-y:scroll;
-        /* overflow-y: scroll; */
-        /* border: 1px solid rgb(216, 216, 216);
+#chat {
+    margin-top: 1%;
+    height: 100%;
+    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    /* border: 1px solid rgb(216, 216, 216);
     border-bottom: none; */
-    }
+}
 
+.test {
+    margin-top: 1%;
+    height: 100%;
+    overflow-y: scroll;
+}
 
-    .test{
-        margin-top: 1%;
-        height: 100%;
-        overflow-y:scroll;
-    }
+.usersList {
+    list-style-type: none;
+    padding-left: 0;
+}
 
-    .usersList {
-        list-style-type: none;
-        padding-left: 0;
-        
-    }
-    .usersList li{
-        font-weight: 500;
-        margin-bottom: 4px;
-        padding: 4px;
-        border-radius: 2px;
-        
-       
-        background-color: white;
-    }
-    
+.usersList li {
+    font-weight: 500;
+    margin-bottom: 4px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: rgba(200, 255, 206, 0.849);
+}

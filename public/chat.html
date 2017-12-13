@@ -22,11 +22,20 @@
     <div class="container-full">
         <div class="row-fix">
             <div class="col-md-3">
+                <div class="room">
+                    Nazwa pokoju:
+                    <span class="roomName"></span>
+                    <a href="#" class="badge badge-danger leave">Opuść chat</a>
+                    <hr>
+                </div>
+                <div class="users">
                 <p class="lead">Użytkownicy</p>
-                <ul class="usersList">
-                    
-                </ul>
 
+
+                <ul class="usersList">
+
+                </ul>
+            </div>
             </div>
             <div class="col-md-9">
                 <div class="row-chat">
@@ -60,15 +69,11 @@
     <script id="message-template" type="text/template">
         <div class="message">
             <div class="row-fix">
-                <div class="col-2 messageForm">
+                <h5>
                     <b>{{from}}:</b>
-                </div>
-                <div class="col-6 messageForm">
-                    {{text}}
-                </div>
-                <div class="col messageForm">
-                    {{createdAt}}
-                </div>
+                    <small class="text-muted">{{createdAt}}</small>
+                </h5>
+                <p class="leader">{{text}}</p>
             </div>
         </div>
         <hr>
@@ -77,15 +82,13 @@
     <script id="location-message-template" type="text/template">
         <div class="message">
             <div class="row-fix">
-                <div class="col-2 messageForm">
-                        <b>{{from}}:</b>
-                </div>
-                <div class="col-6 messageForm">
+                <h5>
+                    <b>{{from}}:</b>
+                    <small class="text-muted">{{data}}</small>
+                </h5>
+                <p class="leader">
                     <a href="{{url}}" target="_blank">Moja lokalizacja</a>
-                </div>
-                <div class="col messageForm">
-                    {{data}}
-                </div>
+                </p>
             </div>
         </div>
         <hr>
@@ -97,4 +100,5 @@
     <script src="./js/chat.js"></script>
 
 </body>
+
 </html>
