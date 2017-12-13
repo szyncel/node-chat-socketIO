@@ -4,6 +4,7 @@ Chat application built with node <a href="https://github.com/nodejs/node">Node.j
 # Live demo
 <a href="https://morning-wave-60219.herokuapp.com">https://morning-wave-60219.herokuapp.com</a>
 
+<img src="https://user-images.githubusercontent.com/30903599/33954759-93eb152c-e039-11e7-801d-84a0176e562c.jpg" style="max-width:100%">
 
 # Instalation Instruction
 <p>To start your Chat app:</p>
